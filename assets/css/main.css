@@ -853,7 +853,7 @@ ol {
 
 .breadcrumbs.overlay::before {
     background-color: #081828;
-    opacity: .9;
+    opacity: .7;
     z-index: -1
 }
 
