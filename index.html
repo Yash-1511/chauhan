@@ -129,7 +129,7 @@
             z-index: 100000;
             height: 100%;
             width: 100%;
-            background-image: url('assets/images/loader.gif');
+            background-image: url('assets/images/loader2.gif');
             background-repeat: no-repeat;
             background-color: #fff;
             background-position: center;
@@ -181,7 +181,7 @@
                                             aria-controls="navbarSupportedContent" aria-expanded="false"
                                             aria-label="Toggle navigation">Products</a>
                                         <ul class="sub-menu collapse" id="submenu-1-4">
-                                            <li class="nav-item"><a href="about-us.html">Curtain Fabric</a></li>
+                                            <li class="nav-item"><a href="./products/curtain/">Curtain Fabric</a></li>
                                             <li class="nav-item"><a href="about-us.html">Sofa Fabric</a></li>
                                             <li class="nav-item"><a href="about-us.html">Blinds</a></li>
                                             <li class="nav-item"><a href="about-us.html">Hunter Douglas Blinds</a></li>
@@ -853,9 +853,14 @@
                 autoplayButtonOutput: false,
                 controlsText: ['<i class="lni lni-arrow-left"></i>', '<i class="lni lni-arrow-right"></i>'],
             });
-            $(window).on("load", function () {
-                $(".preloader").fadeOut(5000);
-            })
+            // $(window).on("load", function () {
+            //     $(".preloader").fadeOut(3000);
+            // })
+            
+                setTimeout(() => {
+                    $(".preloader").fadeOut(5000);
+                }, 5000);
+            
             //====== Clients Logo Slider
             tns({
                 container: '.client-logo-carousel',
