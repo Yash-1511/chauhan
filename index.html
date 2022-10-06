@@ -123,35 +123,26 @@
                 transform: rotateY(360deg);
             }
         }
-
-
-        .pre-loader>.overlay {
+        .preloader {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
-            right: 0;
-            top: 100%;
-            background-color: rgb(0 0 0, .1);
-            z-index: 0;
+            z-index: 100000;
+            height: 100%;
+            width: 100%;
+            background-image: url('/assets/images/loader3.gif');
+            background-repeat: no-repeat;
+            background-color: #fff;
+            background-size: 120px;
+            background-position: center;
         }
+
     </style>
 </head>
-<!-- calc(50% - (0.668 * 20vw)); -->
-<!-- calc(50% - 20vw); -->
 <body style="height:100vh; overflow-x:hidden;">
-    <div style="overflow: hidden;">
-        <div class="pre-loader" style="z-index: 10;
-    position: absolute;
-    width: 25vw;
-    top:calc(50% - (0.668 * 20vw));
-    left:calc(50% - 10vw) ;">
-            <img src="assets/images/logo/logo.PNG" alt="Logo" width="300px">
-            <div class="overlay "></div>
-        </div>
-    </div>
-
+    <div class="preloader"></div>
     <!-- Start Header Area -->
-    <div class="full-body" style="opacity: 0;">
+    <div class="full-body">
         <header class="header style3 navbar-area">
             <!-- Toolbar Start -->
             <!-- Toolbar End -->
@@ -161,7 +152,7 @@
                         <div class="nav-inner">
                             <nav class="navbar navbar-expand-lg">
                                 <a class="navbar-brand" href="./">
-                                    <!-- <img src="assets/images/logo/logo.PNG" alt="Logo"> -->
+                                    <img src="assets/images/logo/logo.PNG" alt="Logo">
                                 </a>
                                 <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -857,7 +848,9 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script type="text/javascript">
-
+              setTimeout(() => {
+                    $(".preloader").fadeOut(2000);
+                }, 2000);
             //========= Hero Slider 
             tns({
                 container: '.hero-slider',
@@ -910,16 +903,7 @@
                 'width': 900,
                 'autoplayVideos': true,
             });
-            const timeLine = gsap.timeline({ defaults: { duration: 1 } })
-
-            timeLine.to('.pre-loader > .overlay', { top: '75%' })
-            timeLine.to('.pre-loader > .overlay', { top: '50%', delay: 0.5 })
-            timeLine.to('.pre-loader > .overlay', { top: '25%', delay: 0.5 })
-            timeLine.to('.pre-loader > .overlay', { top: '0', delay: 0.5 })
-
-            timeLine.set('.pre-loader img', { 'width': "120px" })
-            timeLine.to('.pre-loader', { width: '0vw',left: '10%', top: '0' })
-            timeLine.fromTo('.full-body', { y: -100 }, { y: 0, opacity: 1 ,delay:0.2})
+            
         </script>
 </body>
 
