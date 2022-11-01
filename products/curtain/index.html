@@ -129,14 +129,7 @@
     <![endif]-->
 
     <!-- Preloader -->
-    <div class="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-icon">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div>
+   
     <!-- /End Preloader -->
 
     <!-- Start Header Area -->
@@ -211,10 +204,29 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
-    <div class="container section">
-      <div style="display: flex; align-items:center; justify-content:center;">
-      <div class="sketchfab-embed-wrapper"> <iframe title="Leather couch" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/7778ddf3af584561800f2e26b1595eba/embed"> </iframe> </div>
-    </div>
+ 
+
+    <!-- End Breadcrumbs -->
+
+    <div class="photo-gallery section">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-12">
+                    <main id="gallery">
+                        <div class="main-img">
+                            <img src="../../assets/images/banner/processed-29197645-1d9e-4cf0-b35e-1168e30a476a_Kg8c2oGk.jpeg" id="current" alt="#">
+                        </div>
+                        <div class="images">
+                            <img src="../../assets/images/banner/processed-29197645-1d9e-4cf0-b35e-1168e30a476a_Kg8c2oGk.jpeg" class="img" alt="#">
+                            <img src="../../assets/images/banner/processed-81909c9a-aeb4-4e22-a8a7-a682d4a9ad3f_WQsNgDSs (2).jpeg" class="img" alt="#">
+                            <img src="../../assets/images/banner/processed-9770cb2b-7e33-4342-8a87-d5dde2eaf2f5_lnR1R9Wy.jpeg" class="img" alt="#">
+                                
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
   
 
@@ -329,6 +341,28 @@
     <script src="../../assets/js/tiny-slider.js"></script>
     <script src="../../assets/js/glightbox.min.js"></script>
     <script src="../../assets/js/main.js"></script>
+    <script type="text/javascript">
+        const current = document.getElementById("current");
+        const opacity = 0.6;
+        const imgs = document.querySelectorAll(".img");
+        imgs.forEach(img => {
+            img.addEventListener("click", (e) => {
+                //reset opacity
+                imgs.forEach(img => {
+                    img.style.opacity = 1;
+                });
+                current.src = e.target.src;
+                //adding class 
+                //current.classList.add("fade-in");
+                //opacity
+                e.target.style.opacity = opacity;
+            });
+        });
+            //         $(window).on("load", function () {
+            //     $(".preloader").fadeOut(3000);
+            // })
+    </script>
+    
     <script type="text/javascript">
       var background = ["#24243e", "#302b63"];
 const body = document.getElementsByTagName("body")[0];
