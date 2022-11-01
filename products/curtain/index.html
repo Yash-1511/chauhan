@@ -24,98 +24,239 @@
     <link rel="stylesheet" href="../../assets/css/glightbox.min.css" />
     <link rel="stylesheet" href="../../assets/css/main.css" />
     <style>
-        
-        .colours {
-  position: absolute;
-  bottom: 1em;
-  display: flex;
-  flex-direction: column;
-}
-.colours__labels {
-  display: flex;
-  margin-bottom: 0.5em;
-}
-.colours__labels span {
-  display: block;
-  flex: 2;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.9em;
-  color: white;
-  text-shadow: 0px 0px 4px black;
-}
-.colours__labels span:first-child {
-  flex: 1;
-}
-.colours__inputs {
-  display: flex;
-}
-.colours .jscolor {
-  display: block;
-  border: 0;
-  height: 40px;
-  width: 60px;
-  margin: 0;
-  text-align: center;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-}
-.colours .jscolor:first-child {
-  border-radius: 6px 0 0 6px;
-}
-.couch {
-  width: 1000px;
-  height: 394px;
-  transform: scale(0.66);
-  position: relative;
-  transition: 0.25s ease-in-out;
-}
-.couch__overlay, .couch__img {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.couch__overlay {
-  z-index: 2;
-  fill: #fcff4d;
-  mix-blend-mode: multiply;
-}
-.couch__overlay.fade {
-  transition: 0.6s ease-in-out;
-}
-.gen-random {
-  background: #222;
-  border: 0;
-  color: white;
-  border-radius: 0 6px 6px 0;
-  border-left: 1px solid white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
-@media (max-width: 940px) {
-  .couch {
-    transform: scale(0.5);
-  }
-}
-@media (max-width: 580px) {
-  .couch {
-    transform: scale(0.38);
-  }
-}
-@media (max-width: 460px) {
-  .couch {
-    transform: scale(0.4);
-  }
-}
-.minorbrag {
-  color: white;
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  font-size: 1.25rem;
-  display: inline-block;
-}
+        img.hover-shadow {
+            transition: all 0.3s;
+        }
 
+        .carousel-row {
+            max-width: 80%;
+            margin: 0 auto;
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .carousel-row--img {
+            width: 30%;
+            margin-bottom: 10px;
+        }
+
+        .carousel-row--img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .carousel-row--img img:hover {
+            box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 12px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .column-box {
+            white-space: nowrap;
+            background-color: transparent;
+            width: 100%;
+            background: black;
+            overflow: hidden;
+        }
+
+        .column-box .column {
+            width: 20%;
+            display: inline-block;
+            transition: all 1s;
+        }
+
+        .column-box .column img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        /* The Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding: 50px 0;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        .modal.no-select {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .modal-content {
+            margin: auto;
+            width: 50%;
+            overflow: hidden;
+        }
+
+        @media only screen and (max-width: 37.5em) {
+            .modal-content {
+                width: 90%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @keyframes anime {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .my-slides {
+            display: none;
+            height: 60vh;
+            transition: all 2s;
+            overflow: hidden;
+            animation: anime 0.8s ease-in;
+            position: relative;
+        }
+
+        @media only screen and (max-width: 56.25em) {
+            .my-slides {
+                height: 70vh;
+            }
+        }
+
+        @media only screen and (max-width: 37.5em) {
+            .my-slides {
+                height: 30vh;
+            }
+        }
+
+        .my-slides img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .my-slides--number {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        .demo {
+            opacity: 0.5;
+            transition: all 0.4s;
+        }
+
+        .demo.active,
+        .demo:hover {
+            opacity: 1;
+        }
+
+        /* Caption text */
+        .caption-container {
+            text-align: center;
+            background-color: black;
+            padding: 6px 16px;
+            color: white;
+        }
+
+        /* The Close Button */
+        .close {
+            color: white;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #999;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: fixed;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 50px;
+            transition: 0.6s ease;
+            transform: translateY(-50%);
+        }
+
+        @media only screen and (max-width: 37.5em) {
+
+            .prev,
+            .next {
+                position: fixed;
+                top: 95%;
+                padding: 10px;
+                font-size: 40px;
+                transform: translateY(-50%);
+            }
+        }
+
+        .prev:active,
+        .next:active {
+            font-size: 30px;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        @media only screen and (max-width: 37.5em) {
+            .prev {
+                left: 80%;
+            }
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        @media only screen and (max-width: 37.5em) {
+
+            .prev:hover,
+            .next:hover {
+                background-color: transparent;
+            }
+        }
     </style>
 </head>
 
@@ -129,7 +270,7 @@
     <![endif]-->
 
     <!-- Preloader -->
-   
+
     <!-- /End Preloader -->
 
     <!-- Start Header Area -->
@@ -161,17 +302,17 @@
                                             data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
                                             aria-controls="navbarSupportedContent" aria-expanded="false"
                                             aria-label="Toggle navigation">Products</a>
-                                            <ul class="sub-menu collapse" id="submenu-1-4">
-                                                <li class="nav-item active"><a href="about-us.html">Curtain Fabric</a></li>
-                                                <li class="nav-item"><a href="about-us.html">Sofa Fabric</a></li>
-                                                <li class="nav-item"><a href="about-us.html">Blinds</a></li>
-                                                <li class="nav-item"><a href="about-us.html">Hunter Douglas Blinds</a></li>
-                                                <li class="nav-item"><a href="about-us.html">Wooden Flooring</a></li>
-                                                <li class="nav-item"><a href="about-us.html">Bed-Sheets</a></li>
-                                                <li class="nav-item"><a href="about-us.html">Rugs</a></li>
-                                                <li class="nav-item"><a href="about-us.html">Mattressess</a></li>
-                                                <li class="nav-item"><a href="about-us.html">Accessories</a></li>
-                                            </ul>
+                                        <ul class="sub-menu collapse" id="submenu-1-4">
+                                            <li class="nav-item active"><a href="about-us.html">Curtain Fabric</a></li>
+                                            <li class="nav-item"><a href="about-us.html">Sofa Fabric</a></li>
+                                            <li class="nav-item"><a href="about-us.html">Blinds</a></li>
+                                            <li class="nav-item"><a href="about-us.html">Hunter Douglas Blinds</a></li>
+                                            <li class="nav-item"><a href="about-us.html">Wooden Flooring</a></li>
+                                            <li class="nav-item"><a href="about-us.html">Bed-Sheets</a></li>
+                                            <li class="nav-item"><a href="about-us.html">Rugs</a></li>
+                                            <li class="nav-item"><a href="about-us.html">Mattressess</a></li>
+                                            <li class="nav-item"><a href="about-us.html">Accessories</a></li>
+                                        </ul>
                                     </li>
                                     <li class="nav-item"><a href="../../blogs/">Blogs</a></li>
                                     <li class="nav-item"><a href="../../gallery/">Gallery</a></li>
@@ -204,33 +345,105 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
- 
 
-    <!-- End Breadcrumbs -->
+    <!-- Img on which you want to trigger carousel -->
+    <div class="carousel-row">
+        <div class="carousel-row--img">
+            <img src="../../assets/images/about/1.jpg" class="hover-shadow" />
+        </div>
+        <div class="carousel-row--img">
+            <img src="../../assets/images/about/about-img2.png" class="hover-shadow" />
+        </div>
+        <div class="carousel-row--img">
+            <img src="../../assets/images/about/1.jpg" class="hover-shadow" />
+        </div>
+        <div class="carousel-row--img">
+            <img src="https://i.ibb.co/8M2XWTz/henry-co-3co-Kbdfn-AFg-unsplash.jpg" class="hover-shadow" />
+        </div>
+        <div class="carousel-row--img">
+            <img src="../../assets/images/about/1.jpg" class="hover-shadow" />
+        </div>
+        <div class="carousel-row--img">
+            <img src="https://i.ibb.co/8M2XWTz/henry-co-3co-Kbdfn-AFg-unsplash.jpg" class="hover-shadow" />
+        </div>
+    </div>
 
-    <div class="photo-gallery section">
-        <div class="container">
-            
-            <div class="row">
-                <div class="col-12">
-                    <main id="gallery">
-                        <div class="main-img">
-                            <img src="../../assets/images/banner/processed-29197645-1d9e-4cf0-b35e-1168e30a476a_Kg8c2oGk.jpeg" id="current" alt="#">
-                        </div>
-                        <div class="images">
-                            <img src="../../assets/images/banner/processed-29197645-1d9e-4cf0-b35e-1168e30a476a_Kg8c2oGk.jpeg" class="img" alt="#">
-                            <img src="../../assets/images/banner/processed-81909c9a-aeb4-4e22-a8a7-a682d4a9ad3f_WQsNgDSs (2).jpeg" class="img" alt="#">
-                            <img src="../../assets/images/banner/processed-9770cb2b-7e33-4342-8a87-d5dde2eaf2f5_lnR1R9Wy.jpeg" class="img" alt="#">
-                                
-                        </div>
-                    </main>
+    <!-- The Modal/Lightbox -->
+    <div id="myModal" class="modal no-select">
+        <span class="close cursor"><i class="lni lni-facebook-original"></i></span>
+        <!-- Next/previous controls -->
+        <a class="prev no-select">&#10094;</a>
+        <a class="next no-select">&#10095;</a>
+        <div class="modal-content">
+            <div class="my-slides">
+                <div class="my-slides--number"></div>
+                <img src="../../assets/images/about/1.jpg" />
+            </div>
+
+            <div class="my-slides">
+                <div class="my-slides--number"></div>
+                <img src="https://i.ibb.co/8M2XWTz/henry-co-3co-Kbdfn-AFg-unsplash.jpg" />
+            </div>
+
+            <div class="my-slides">
+                <div class="my-slides--number"></div>
+                <img src="../../assets/images/about/1.jpg" />
+            </div>
+
+            <div class="my-slides">
+                <div class="my-slides--number"></div>
+                <img src="https://i.ibb.co/8M2XWTz/henry-co-3co-Kbdfn-AFg-unsplash.jpg" />
+            </div>
+
+            <div class="my-slides">
+                <div class="my-slides--number"></div>
+                <img src="../../assets/images/about/1.jpg" />
+            </div>
+
+            <div class="my-slides">
+                <div class="my-slides--number"></div>
+                <img src="https://i.ibb.co/8M2XWTz/henry-co-3co-Kbdfn-AFg-unsplash.jpg" />
+            </div>
+
+
+
+            <!-- Caption text -->
+            <div class="caption-container">
+                <p id="caption"></p>
+            </div>
+
+            <!-- Thumbnail image controls -->
+            <div class="column-box">
+                <div class="column">
+                    <img class="demo" src="../../assets/images/about/1.jpg" alt="Nature" />
+                </div>
+
+                <div class="column">
+                    <img class="demo" src="https://i.ibb.co/8M2XWTz/henry-co-3co-Kbdfn-AFg-unsplash.jpg" alt="Snow" />
+                </div>
+
+                <div class="column">
+                    <img class="demo" src="../../assets/images/about/1.jpg" alt="Mountains" />
+                </div>
+
+                <div class="column">
+                    <img class="demo" src="https://i.ibb.co/8M2XWTz/henry-co-3co-Kbdfn-AFg-unsplash.jpg" alt="Lights" />
+                </div>
+
+                <div class="column">
+                    <img class="demo" src="https://i.ibb.co/R2NSmwm/bath-img-Desktop.jpg" alt="Mountains" />
+                </div>
+                <div class="column">
+                    <img class="demo" src="https://i.ibb.co/8M2XWTz/henry-co-3co-Kbdfn-AFg-unsplash.jpg" alt="Lights" />
                 </div>
             </div>
         </div>
     </div>
-  
 
-  
+    <!-- End Breadcrumbs -->
+
+
+
 
 
     <!-- Start Footer Area -->
@@ -342,132 +555,253 @@
     <script src="../../assets/js/glightbox.min.js"></script>
     <script src="../../assets/js/main.js"></script>
     <script type="text/javascript">
-        const current = document.getElementById("current");
-        const opacity = 0.6;
-        const imgs = document.querySelectorAll(".img");
-        imgs.forEach(img => {
-            img.addEventListener("click", (e) => {
-                //reset opacity
-                imgs.forEach(img => {
-                    img.style.opacity = 1;
-                });
-                current.src = e.target.src;
-                //adding class 
-                //current.classList.add("fade-in");
-                //opacity
-                e.target.style.opacity = opacity;
-            });
+        // buttons
+        const prev = document.querySelector(".prev");
+        const next = document.querySelector(".next");
+        const closeCur = document.querySelector(".close")
+
+        // modal
+        const modalContent = document.querySelector(".modal-content");
+        const slides = Array.from(document.querySelectorAll(".my-slides"));
+        const columns = document.querySelectorAll(".column");
+        const demos = Array.from(document.querySelectorAll(".demo"));
+
+        // text
+        const numberText = document.querySelectorAll('.my-slides--number');
+        const captionText = document.getElementById("caption");
+
+        // img on page
+        const hoverShadows = Array.from(document.querySelectorAll(".hover-shadow"));
+
+
+        let slideIndex;
+        let translate = 0;
+        let columnWidth;
+
+
+        // if window resize reset all values
+        window.addEventListener("resize", () => {
+            columnWidth = columns[0].offsetWidth;
+            columns.forEach(el => {
+                el.style.transform = `translateX(0)`;
+            })
+            slideIndex = 1;
+            translate = 0;
+            showSlides(slideIndex)
+        })
+
+        // buttons action
+
+        prev.addEventListener("click", () => {
+            if (slideIndex === 1) return false
+            plusSlides(-1)
+            if (translate === 0) return null
+            translate += columnWidth + 4;
+            columns.forEach(el => {
+                el.style.transform = `translateX(${translate}px)`;
+            })
         });
-            //         $(window).on("load", function () {
-            //     $(".preloader").fadeOut(3000);
-            // })
+
+        next.addEventListener("click", () => {
+            if (demos.length + 1 === 1) return false
+            plusSlides(1)
+            if (translate === -(columns.length - 3) * (columnWidth + 4)) return null
+            translate -= columnWidth + 4;
+            columns.forEach(el => {
+                el.style.transform = `translateX(${translate}px)`;
+            })
+        });
+        closeCur.addEventListener("click", () => closeModal());
+
+
+        // add click to main img to trigger open carousel 
+
+        hoverShadows.forEach((el, i) => {
+            el.addEventListener("click", () => {
+                openModal()
+                currentSlide(i + 1)
+            });
+        })
+
+        // add click thumbnails to show curent slide
+
+        demos.forEach((el, i) => {
+            el.addEventListener("click", () => currentSlide(i + 1));
+        })
+
+        // Open modal
+
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+            columnWidth = columns[0].offsetWidth;
+            showAndClose();
+            numberText.forEach((el, id) => {
+                el.innerHTML = `${id + 1} / ${numberText.length}`
+            })
+        }
+
+        // Close the Modal
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        slideIndex = 1;
+
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+            let x = (n - 3) < 0 ? 0 : (n - 3);
+            translate = -(columnWidth + 4) * x;
+            columns.forEach(el => {
+                el.style.transform = `translateX(${translate}px)`;
+            })
+        }
+
+        // control showing slides
+
+        function showSlides(n) {
+            let i;
+            showAndClose();
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < demos.length; i++) {
+                demos[i].classList.remove("active")
+            }
+            slides[slideIndex - 1].style.display = "block";
+            demos[slideIndex - 1].classList.add("active");
+            captionText.innerHTML = demos[slideIndex - 1].alt;
+        }
+
+        // control buttons if reach to limit left or right
+
+        function showAndClose() {
+            if (slideIndex === 1) {
+                prev.style.display = "none"
+            } else {
+                prev.style.display = "block"
+            }
+
+            if (slideIndex === demos.length) {
+                next.style.display = "none";
+            } else {
+                next.style.display = "block";
+            }
+        }
     </script>
-    
+
     <script type="text/javascript">
-      var background = ["#24243e", "#302b63"];
-const body = document.getElementsByTagName("body")[0];
-const couch = document.getElementById("js-couch");
-const col1 = document.getElementById("js-color-1");
-const col2 = document.getElementById("js-color-2");
-const col3 = document.getElementById("js-color-3");
+        var background = ["#24243e", "#302b63"];
+        const body = document.getElementsByTagName("body")[0];
+        const couch = document.getElementById("js-couch");
+        const col1 = document.getElementById("js-color-1");
+        const col2 = document.getElementById("js-color-2");
+        const col3 = document.getElementById("js-color-3");
 
-function updateCouch(picker, string) {
-  if (!string) {
-  couch.style.fill = picker.toHEXString();
-    } else {
-      // Used when generating random
-      couch.style.fill = string;
-     setTimeout(function(){couch.classList.remove("fade");}, 700); 
-    }
-}
+        function updateCouch(picker, string) {
+            if (!string) {
+                couch.style.fill = picker.toHEXString();
+            } else {
+                // Used when generating random
+                couch.style.fill = string;
+                setTimeout(function () { couch.classList.remove("fade"); }, 700);
+            }
+        }
 
-function updateBackgroundD(picker, randArray) {
- if (!randArray) {
-  background[0] = picker.toHEXString();
-  } else {
-    background[0] = randArray[0];
-  }
-  body.style.background =
-    "linear-gradient(to right, " +
-    background[0] +
-    " , " +
-    background[1] +
-    " , " +
-    background[0] +
-    ")";
-}
+        function updateBackgroundD(picker, randArray) {
+            if (!randArray) {
+                background[0] = picker.toHEXString();
+            } else {
+                background[0] = randArray[0];
+            }
+            body.style.background =
+                "linear-gradient(to right, " +
+                background[0] +
+                " , " +
+                background[1] +
+                " , " +
+                background[0] +
+                ")";
+        }
 
-function updateBackgroundL(picker, randArray) {
- if (!randArray) {
-  background[1] = picker.toHEXString();
-  } else {
-    background[1] = randArray[1];
-  }
-  
-  body.style.background =
-    "linear-gradient(to right, " +
-    background[0] +
-    " , " +
-    background[1] +
-    " , " +
-    background[0] +
-    ")";
-}
+        function updateBackgroundL(picker, randArray) {
+            if (!randArray) {
+                background[1] = picker.toHEXString();
+            } else {
+                background[1] = randArray[1];
+            }
 
-
-// Generate random
+            body.style.background =
+                "linear-gradient(to right, " +
+                background[0] +
+                " , " +
+                background[1] +
+                " , " +
+                background[0] +
+                ")";
+        }
 
 
-
-function generateRandom() {
-// Couch  
-var red = Math.floor(Math.random() * 256) ;
-var green = Math.floor(Math.random() * 256) ;
-var blue = Math.floor(Math.random() * 256) ;
-// Grad 1
-var grad_1_r = Math.floor(Math.random() * 256) ;
-var grad_1_g = Math.floor(Math.random() * 256) ;
-var grad_1_b = Math.floor(Math.random() * 256) ;
-// Grad 2  
-var grad_2_r = grad_1_r >= 206 ? grad_1_r : grad_1_r + 50;
-var grad_2_g = grad_1_g >= 206 ? grad_1_g : grad_1_g + 50;
-var grad_2_b = grad_1_b >= 206 ? grad_1_b : grad_1_b + 50;
-  
-let hex = rgbToHex(red, green, blue);
-let grad_1_hex = rgbToHex(grad_1_r, grad_1_g, grad_1_b);
-let grad_2_hex = rgbToHex(grad_2_r, grad_2_g, grad_2_b);
-  
-let gradient = [grad_1_hex, grad_2_hex];
-  
-  updateCouch(null, hex);
-  updateBackgroundD(null, gradient);
-  updateBackgroundL(null, gradient);
-  
-    couch.classList.add("fade");
-  
- document.getElementById('js-color-1')
-    .jscolor.fromString(hex);
-  
- document.getElementById('js-color-2')
-    .jscolor.fromString(grad_1_hex);
-  
-   document.getElementById('js-color-3')
-    .jscolor.fromString(grad_2_hex);
-}
-
-function componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
-}
-
-function rgbToHex(r, g, b) {
-    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-}
+        // Generate random
 
 
-       
+
+        function generateRandom() {
+            // Couch  
+            var red = Math.floor(Math.random() * 256);
+            var green = Math.floor(Math.random() * 256);
+            var blue = Math.floor(Math.random() * 256);
+            // Grad 1
+            var grad_1_r = Math.floor(Math.random() * 256);
+            var grad_1_g = Math.floor(Math.random() * 256);
+            var grad_1_b = Math.floor(Math.random() * 256);
+            // Grad 2  
+            var grad_2_r = grad_1_r >= 206 ? grad_1_r : grad_1_r + 50;
+            var grad_2_g = grad_1_g >= 206 ? grad_1_g : grad_1_g + 50;
+            var grad_2_b = grad_1_b >= 206 ? grad_1_b : grad_1_b + 50;
+
+            let hex = rgbToHex(red, green, blue);
+            let grad_1_hex = rgbToHex(grad_1_r, grad_1_g, grad_1_b);
+            let grad_2_hex = rgbToHex(grad_2_r, grad_2_g, grad_2_b);
+
+            let gradient = [grad_1_hex, grad_2_hex];
+
+            updateCouch(null, hex);
+            updateBackgroundD(null, gradient);
+            updateBackgroundL(null, gradient);
+
+            couch.classList.add("fade");
+
+            document.getElementById('js-color-1')
+                .jscolor.fromString(hex);
+
+            document.getElementById('js-color-2')
+                .jscolor.fromString(grad_1_hex);
+
+            document.getElementById('js-color-3')
+                .jscolor.fromString(grad_2_hex);
+        }
+
+        function componentToHex(c) {
+            var hex = c.toString(16);
+            return hex.length == 1 ? "0" + hex : hex;
+        }
+
+        function rgbToHex(r, g, b) {
+            return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
+
+
+
     </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.js'></script>
-</body>
+    </body>
 
 </html>
