@@ -5,122 +5,241 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js"></script>
-
-   <style>
-    html, body, .stage, .ring, .img {
-  width:100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  user-select:none;
+    <style>
+        * {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
 }
 
-html, body, .stage {
-  overflow:hidden;
-  background:#000;
-  
+body {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
-div, svg {
+.slide-container {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 100px auto;
+  border-radius: 50%;
+  border: 5px solid #999;
+  background: url(https://picsum.photos/id/453/600/600?grayscale) no-repeat center/cover;
+  transition: all .3s;
+}
+
+.slide-container .slide {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  margin-top: -60px;
+  margin-left: -60px;
+  background: url(https://picsum.photos/id/1027/600/600?grayscale) no-repeat center/cover;
+  border-radius: 50%;
+  border: 1px solid #999;
+  cursor: pointer;
+  transform: scale(1);
+  transition: all .3s;
 }
 
-.container {
-  perspective: 2000px;
-  width: 300px;
-  height: 400px;  
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
+.slide[data-slide-no="1"] {
+  background-image: url(https://picsum.photos/id/1027/600/600?grayscale);
 }
-   </style>
+
+.slide[data-slide-no="2"] {
+  background-image: url(https://picsum.photos/id/1074/600/600?grayscale);
+}
+
+.slide[data-slide-no="3"] {
+  background-image: url(https://picsum.photos/id/252/600/600?grayscale);
+}
+
+.slide[data-slide-no="4"] {
+  background-image: url(https://picsum.photos/id/31/600/600?grayscale);
+}
+
+.slide[data-slide-no="5"] {
+  background-image: url(https://picsum.photos/id/318/600/600?grayscale);
+}
+
+.slide[data-slide-no="6"] {
+  background-image: url(https://picsum.photos/id/345/600/600?grayscale);
+}
+
+.slide[data-slide-no="7"] {
+  background-image: url(https://picsum.photos/id/357/600/600?grayscale);
+}
+
+.slide[data-slide-no="7"] {
+  background-image: url(https://picsum.photos/id/403/600/600?grayscale);
+}
+
+.slide[data-slide-no="8"] {
+  background-image: url(https://picsum.photos/id/418/600/600?grayscale);
+}
+
+.slide[data-slide-no="9"] {
+  background-image: url(https://picsum.photos/id/433/600/600?grayscale);
+}
+
+.slide[data-slide-no="10"] {
+  background-image: url(https://picsum.photos/id/453/600/600?grayscale);
+}
+
+.slide[data-slide-no="11"] {
+  background-image: url(https://picsum.photos/id/48/600/600?grayscale);
+}
+
+.slide[data-slide-no="12"] {
+  background-image: url(https://picsum.photos/id/486/600/600?grayscale);
+}
+
+.button-wrap {
+  margin-top: auto;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.button-wrap .btn {
+  display: block;
+  flex: 1 1 auto;
+  line-height: 50px;
+  text-align: center;
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all .3s;
+}
+
+.button-wrap .btn:hover {
+  background: #000;
+}
+
+.button-wrap .btn-prev {
+  border-right: 1px solid #999;
+}
+    </style>
 </head>
 <body>
-    <div class="stage">
-  
-  
-        <div class="container">
-          <div class="ring">
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-            <div class="img"></div>
-          </div>
-        </div>
-        
-        </div>
-      <script src="https://code.jquery.com/jquery-3.6.0.js"
-    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-  
-     <script>
-        let xPos = 0;
+    <div class="slide-container">
+        <div class="slide" data-slide-no="1"></div>
+        <div class="slide" data-slide-no="2"></div>
+        <div class="slide" data-slide-no="3"></div>
+        <div class="slide" data-slide-no="4"></div>
+        <div class="slide" data-slide-no="5"></div>
+        <div class="slide" data-slide-no="6"></div>
+        <div class="slide" data-slide-no="7"></div>
+        <div class="slide" data-slide-no="8"></div>
+        <div class="slide" data-slide-no="9"></div>
+        <div class="slide" data-slide-no="10"></div>
+        <div class="slide" data-slide-no="11"></div>
+        <div class="slide" data-slide-no="12"></div>
+      </div>
+      <div class="button-wrap">
+        <button type="button" class="btn btn-prev">prev</button>
+        <button type="button" class="btn btn-next">next</button>
+      </div>
+      <script>
+        const container = document.querySelector('.slide-container');
+const slides = document.querySelectorAll('.slide');
+const btns = document.querySelectorAll('.btn');
+const btnPrev = document.querySelector('.btn-prev');
+const btnNext = document.querySelector('.btn-next');
 
-gsap.timeline()
-    .set('.ring', { rotationY:180, cursor:'grab' }) //set initial rotationY so the parallax jump happens off screen
-    .set('.img',  { // apply transform rotations to each image
-      rotateY: (i)=> i*-36,
-      transformOrigin: '50% 50% 500px',
-      z: -500,
-      backgroundImage:(i)=>'url(https://picsum.photos/id/'+(i+32)+'/600/400/)',
-      backgroundPosition:(i)=>getBgPos(i),
-      backfaceVisibility:'hidden'
-    })    
-    .from('.img', {
-      duration:1.5,
-      y:200,
-      opacity:0,
-      stagger:0.1,
-      ease:'expo'
-    })
-    .add(()=>{
-      $('.img').on('mouseenter', (e)=>{
-        let current = e.currentTarget;
-        gsap.to('.img', {opacity:(i,t)=>(t==current)? 1:0.5, ease:'power3'})
-      })
-      $('.img').on('mouseleave', (e)=>{
-        gsap.to('.img', {opacity:1, ease:'power2.inOut'})
-      })
-    }, '-=0.5')
+const r = container.offsetWidth / 2;
+const n = slides.length;
+const angle = 360 / n;
 
-$(window).on('mousedown touchstart', dragStart);
-$(window).on('mouseup touchend', dragEnd);
-      
+let setId = 0;
+let deg = [];
+let x = 0;
+let y = 0;
 
-function dragStart(e){ 
-  if (e.touches) e.clientX = e.touches[0].clientX;
-  xPos = Math.round(e.clientX);
-  gsap.set('.ring', {cursor:'grabbing'})
-  $(window).on('mousemove touchmove', drag);
+const positionSlides = () => {
+  let i = 0;
+  
+  for (; i < n; i++) {
+    deg[i] = i * angle;
+    x = Math.cos(deg[i] * (Math.PI / 180)) * r + r;
+    y = Math.sin(deg[i] * (Math.PI / 180)) * r + r;
+    
+    slides[i].style.top = `${~~y}px`;
+    slides[i].style.left = `${~~x}px`;
+  }
 }
 
+const prevSlide = () => {
+  let i = 0;
+  for(; i < n; i++) deg[i] -= angle;
+  animateSlide();
+}
+const nextSlide = () => {
+  let i = 0;
+  for(; i < n; i++) deg[i] += angle;
+  animateSlide();
+}
+const animateSlide = () => {
+  let i = 0;
+  
+  for(; i < n; i++){
+    x = Math.cos(deg[i] * (Math.PI / 180)) * r + r;
+    y = Math.sin(deg[i] * (Math.PI / 180)) * r + r;
+    
+    slides[i].style.top = `${~~y}px`;
+    slides[i].style.left = `${~~x}px`;
+    
+    y === 0 ? slides[i].classList.add('active') : slides[i].classList.remove('active');
+  }
+  
+  const activeSlide = document.querySelector('.slide.active');
+  const slideBgImg = getComputedStyle(activeSlide).backgroundImage;
+  
+  container.style.backgroundImage = slideBgImg;
+}
+const autoPlay = () => setId = setInterval(nextSlide, 3000);
 
-function drag(e){
-  if (e.touches) e.clientX = e.touches[0].clientX;    
+const changeSlideImg = (e) => {
+  let i = 0;
+  for (; i < n; i++) slides[i].classList.remove('active');
+  e.currentTarget.classList.add('active');
 
-  gsap.to('.ring', {
-    rotationY: '-=' +( (Math.round(e.clientX)-xPos)%360 ),
-    onUpdate:()=>{ gsap.set('.img', { backgroundPosition:(i)=>getBgPos(i) }) }
+  const activeSlide = document.querySelector('.slide.active');
+  const slideBgImg = getComputedStyle(activeSlide).backgroundImage;
+
+  container.style.backgroundImage = slideBgImg;
+}
+
+positionSlides();
+autoPlay();
+
+btnPrev.addEventListener('click', prevSlide);
+btnNext.addEventListener('click', nextSlide);
+btns.forEach(btn => {
+  btn.addEventListener('mouseenter', () => clearInterval(setId));
+  btn.addEventListener('mouseleave', () => {
+    clearInterval(setId);
+    autoPlay();
   });
-  
-  xPos = Math.round(e.clientX);
-}
+})
 
-
-function dragEnd(e){
-  $(window).off('mousemove touchmove', drag);
-  gsap.set('.ring', {cursor:'grab'});
-}
-
-
-function getBgPos(i){ //returns the background-position string to create parallax movement in each image
-  return ( 100-gsap.utils.wrap(0,360,gsap.getProperty('.ring', 'rotationY')-180-i*36)/360*500 )+'px 0px';
-}
-     </script>
-  </body>
+slides.forEach(slide => {
+  slide.addEventListener('click', changeSlideImg);
+  slide.addEventListener('mouseenter', (e) => {
+    changeSlideImg(e);
+    clearInterval(setId);
+  });
+  slide.addEventListener('mouseleave', () => {
+    clearInterval(setId);
+    autoPlay();
+  });
+})
+      </script>
+</body>
 </html>
