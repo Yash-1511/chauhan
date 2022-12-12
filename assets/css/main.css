@@ -6164,7 +6164,7 @@ ul.custom-flex {
 .client-logo-section .client-logo-wrapper .client-logo-carousel .client-logo img {
     max-width: 220px;
     width: 85%;
-    opacity: .3;
+    /* opacity: .3; */
     -webkit-transition: all .3s ease-out 0s;
     transition: all .3s ease-out 0s
 }

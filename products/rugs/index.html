@@ -23,6 +23,16 @@
     <link rel="stylesheet" href="../../assets/css/tiny-slider.css" />
     <link rel="stylesheet" href="../../assets/css/glightbox.min.css" />
     <link rel="stylesheet" href="../../assets/css/main.css" />
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"
+  ></script>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <style>
         /* Reset CSS */
 * {
@@ -182,59 +192,155 @@ img {
     <div class="container" style="margin-top: 40px;">
         <div class="masonry">
           <div class="mItem">
+            <a
+            href="/assets/images/products/rugs/1.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/1.jpg">
+            </a>
           </div>
         
           <div class="mItem">
+            <a
+            href="/assets/images/products/rugs/2.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/2.jpg">
+            </a>
           </div>
         
           <div class="mItem">
+              <a
+            href="/assets/images/products/rugs/3.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/3.jpg">
+            </a>
           </div>
         
           <div class="mItem">
+              <a
+            href="/assets/images/products/rugs/4.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/4.jpg">
+            </a>
           </div>
         
           <div class="mItem">
+              <a
+            href="/assets/images/products/rugs/5.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/5.jpg">
+            </a>
           </div>
         
           <div class="mItem">
+              <a
+            href="/assets/images/products/rugs/6.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/6.jpg">
+            </a>
           </div>
         
           <div class="mItem">
+              <a
+            href="/assets/images/products/rugs/7.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/7.jpg">
+            </a>
           </div>
         
           <div class="mItem">
+              <a
+            href="/assets/images/products/rugs/8.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/8.jpg">
+            </a>
           </div>
           <div class="mItem">
+              <a
+            href="/assets/images/products/rugs/9.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/9.jpg">
+            </a>
           </div>
         
           <div class="mItem">
+              <a
+            href="/assets/images/products/rugs/10.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/10.jpg">
+            </a>
           </div>
         
           <div class="mItem">
+              <a
+            href="/assets/images/products/rugs/11.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/11.jpg">
+            </a>
           </div>
         
           <div class="mItem">
+              <a
+            href="/assets/images/products/rugs/12.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/12.jpg">
+            </a>
           </div>
           <div class="mItem">
+              <a
+            href="/assets/images/products/rugs/13.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/13.jpg">
+            </a>
           </div><div class="mItem">
+              <a
+            href="/assets/images/products/rugs/14.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/14.jpg">
+            </a>
           </div><div class="mItem">
+              <a
+            href="/assets/images/products/rugs/15.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/15.jpg">
+            </a>
           </div><div class="mItem">
+              <a
+            href="/assets/images/products/rugs/16.jpg"
+            data-fancybox="gallery"
+            data-caption="Caption Images 1"
+          >
             <img src="/assets/images/products/rugs/16.jpg">
+            </a>
           </div>
           </div>
     </div>
@@ -366,6 +472,19 @@ img {
          $(window).on("load", function () {
             $(".preloader").fadeOut(3000);
         })
+         // Fancybox Config
+      $('[data-fancybox="gallery"]').fancybox({
+        buttons: [
+          "slideShow",
+          "thumbs",
+          "zoom",
+          "fullScreen",
+          "share",
+          "close",
+        ],
+        loop: false,
+        protect: true,
+      });
     </script>
     </body>
 
