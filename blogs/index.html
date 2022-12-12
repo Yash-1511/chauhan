@@ -20,19 +20,27 @@
     <link rel="stylesheet" href="../assets/css/tiny-slider.css" />
     <link rel="stylesheet" href="../assets/css/glightbox.min.css" />
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <style>
+          .preloader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100000;
+            height: 100%;
+            width: 100%;
+            background-image: url('../assets/images/loader.gif');
+            background-repeat: no-repeat;
+            background-color: #fff;
+            background-size: 120px;
+            background-position: center;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-icon">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
     </div>
-
 
     <header class="header style3 navbar-area">
         <!-- Toolbar Start -->
@@ -112,7 +120,6 @@
                 <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
                     <div class="breadcrumbs-content">
                         <h1 class="page-title">Blogs</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has</p>
                     </div>
                     <ul class="breadcrumb-nav">
                         <li><a href="index.html">Home</a></li>
